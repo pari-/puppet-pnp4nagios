@@ -1,0 +1,12 @@
+#
+# this file is managed by puppet!
+#
+
+# Default settings for the NPCD init script.
+
+# Should NPCD be started? ("yes" to enable)
+RUN="<%= (!scope.lookupvar('pnp4nagios::service_ensure') || scope.lookupvar('pnp4nagios::service_ensure').casecmp('stopped') == 0) ? 'no' : 'yes' %>"
+
+# Additional options that are passed to the daemon.
+DAEMON_OPTS="-d -f <%= scope.lookupvar('pnp4nagios::npcd_config') %>"
+
